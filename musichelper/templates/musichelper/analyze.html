@@ -1,0 +1,31 @@
+{% extends 'musichelper/base.html' %}
+
+{% block title %}
+  Analyze Track | Music Helper
+{% endblock title %}
+
+{% block content %}
+<div class="columns is-centered mt-5">
+  <div class="column is-half">
+    <div class="notification has-text-centered has-text-black">
+      <h1 class="title">Analyze your track</h1>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button is-primary">Detect BPM & Key</button>
+      </form>
+    </div>
+
+    {% if bpm_info and key_info %}
+      <div class="notification is-success has-text-centered mt-5 has-text-black">
+        <p><strong>Detected BPM:</strong> {{ bpm_info }}</p>
+        <p><strong>Detected Key:</strong> {{ key_info }}</p>
+      </div>
+    {% elif bpm_info or key_info %}
+      <div class="notification is-warning has-text-centered mt-5 has-text-black">
+        <p>Something was partially detected: BPM={{ bpm_info }}, Key={{ key_info }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
