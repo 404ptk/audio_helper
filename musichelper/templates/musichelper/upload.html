@@ -1,0 +1,21 @@
+{% extends 'musichelper/base.html' %}
+
+{% block title %}
+    Mastering | Music Helper
+{% endblock title %}
+
+{% block content %}
+<div class="columns is-centered">
+    <div class="column is-half">
+        <div class="notification has-text-centered">
+            <h1 class="title">Upload a file to master</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button is-primary mt-2">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
