@@ -7,7 +7,7 @@
 {% block content %}
 <div class="columns is-centered">
     <div class="column is-half">
-        <div class="notification has-text-centered">
+        <div class="notification has-text-centered has-text-black">
             <h1 class="title">Upload a file to master</h1>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -18,4 +18,3 @@
     </div>
 </div>
 {% endblock content %}
-
